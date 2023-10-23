@@ -8,3 +8,7 @@ def test_docker_run():
     url = base_url + "/health"
     response = requests.get(url)
     assert(response.ok, True)
+
+
+def test_1():
+
