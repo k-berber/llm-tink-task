@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 
-from utils import MessageInfo
+from utils import MessageInfo, get_answer_from_llm
 
 
 app = FastAPI()
@@ -12,9 +12,9 @@ async def check_health() -> dict:
     return {"health": "ok"}
 
 
-@app.get("/message")
+@app.post("/message")
 async def message(message_info: MessageInfo) -> dict:
-    return {"health": "ok"}
+    return {"answer": get_answer_from_llm(message_info)}
 
 
 if __name__ == "__main__":
